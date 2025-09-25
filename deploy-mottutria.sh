@@ -6,7 +6,7 @@ export APP_SERVICE_PLAN="planTriaMottu"
 # Altere a sua região conforme orientação do Professor
 export LOCATION="brazilsouth"
 export RUNTIME="JAVA:17-java17"
-export GITHUB_REPO_NAME="guiakiraa/challenge-cloud"
+export GITHUB_REPO_NAME="/guiakiraa/challenge-cloud-sprint3"
 export BRANCH="main"
 export APP_INSIGHTS_NAME="ai-mottu-tria"
 
