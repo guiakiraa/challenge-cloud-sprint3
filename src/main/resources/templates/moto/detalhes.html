@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Detalhes da Moto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-4">
+    <div th:replace="~{fragmentos :: menu}" />
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 mb-0">Detalhes da Moto</h1>
+        <a href="/motos" class="btn btn-outline-secondary">Voltar</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-2">
+                    <label class="form-label">ID</label>
+                    <div class="form-control" th:text="${moto.id}"></div>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Placa</label>
+                    <div class="form-control" th:text="${moto.placa}"></div>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Ano</label>
+                    <div class="form-control" th:text="${moto.ano}"></div>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Modelo</label>
+                    <div class="form-control" th:text="${moto.modelo}"></div>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Combustível</label>
+                    <div class="form-control" th:text="${moto.tipoCombustivel}"></div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Filial</label>
+                    <div class="form-control" th:text="${moto.filial.nome}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

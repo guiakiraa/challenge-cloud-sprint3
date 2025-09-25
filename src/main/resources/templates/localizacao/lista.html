@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Localizações</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-4">
+    <div th:replace="~{fragmentos :: menu}" />
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 mb-0">Localizações</h1>
+        <a href="/localizacao/novo" class="btn btn-primary">+ Nova Localização</a>
+    </div>
+
+    <div class="alert alert-danger" th:if="${erro}" th:text="${erro}"></div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover table-striped mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Moto</th>
+                            <th>Ponto X</th>
+                            <th>Ponto Y</th>
+                            <th>Data/Hora</th>
+                            <th>Fonte</th>
+                            <th class="text-end">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="l : ${localizacoes}">
+                            <td th:text="${l.id}"></td>
+                            <td th:text="${l.moto.placa}"></td>
+                            <td th:text="${l.pontoX}"></td>
+                            <td th:text="${l.pontoY}"></td>
+                            <td th:text="${#temporals.format(l.dataHora, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                            <td th:text="${l.fonte}"></td>
+                            <td class="text-end">
+                                <a class="btn btn-sm btn-outline-primary" th:href="@{'/localizacao/detalhes/' + ${l.id}}">Detalhes</a>
+                                <a class="btn btn-sm btn-warning" th:href="@{'/localizacao/editar/' + ${l.id}}">Editar</a>
+                                <a class="btn btn-sm btn-danger" th:href="@{'/localizacao/remover/' + ${l.id}}" onclick="return confirm('Remover esta localização?');">Remover</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

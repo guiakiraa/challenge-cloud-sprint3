@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Detalhes da Localização</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-4">
+    <div th:replace="~{fragmentos :: menu}" />
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 mb-0">Detalhes da Localização</h1>
+        <a href="/localizacoes" class="btn btn-outline-secondary">Voltar</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-2">
+                    <label class="form-label">ID</label>
+                    <div class="form-control" th:text="${localizacao.id}"></div>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Moto</label>
+                    <div class="form-control" th:text="${localizacao.moto.placa}"></div>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Ponto X</label>
+                    <div class="form-control" th:text="${localizacao.pontoX}"></div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Ponto Y</label>
+                    <div class="form-control" th:text="${localizacao.pontoY}"></div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Data/Hora</label>
+                    <div class="form-control" th:text="${#temporals.format(localizacao.dataHora, 'yyyy-MM-dd HH:mm:ss')}"></div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Fonte</label>
+                    <div class="form-control" th:text="${localizacao.fonte}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

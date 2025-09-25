@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Cadastro de Localização</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-4">
+    <div th:replace="~{fragmentos :: menu}" />
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 mb-0" th:text="${localizacao.id} != null ? 'Editar Localização' : 'Nova Localização'"></h1>
+        <a href="/localizacoes" class="btn btn-outline-secondary">Voltar</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form th:action="${localizacao.id} != null ? @{'/localizacao/atualizar/' + ${localizacao.id}} : @{/localizacao/salvar}" method="post" th:object="${localizacao}">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Moto</label>
+                        <select class="form-select" th:field="*{moto.id}" required>
+                            <option th:each="m : ${motos}" th:value="${m.id}" th:text="${m.placa}"></option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Ponto X</label>
+                        <input class="form-control" type="number" step="0.000001" th:field="*{pontoX}" required />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Ponto Y</label>
+                        <input class="form-control" type="number" step="0.000001" th:field="*{pontoY}" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Data/Hora</label>
+                        <input class="form-control" type="datetime-local" th:field="*{dataHora}" th:value="${#temporals.format(localizacao.dataHora, 'yyyy-MM-dd''T''HH:mm')}" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Fonte</label>
+                        <input class="form-control" type="text" th:field="*{fonte}" required />
+                    </div>
+                </div>
+                <div class="mt-4 d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <a href="/localizacoes" class="btn btn-light">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

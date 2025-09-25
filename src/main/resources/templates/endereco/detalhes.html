@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Detalhes do Endereço</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-4">
+    <div th:replace="~{fragmentos :: menu}" />
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 mb-0">Detalhes do Endereço</h1>
+        <a href="/enderecos" class="btn btn-outline-secondary">Voltar</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-2">
+                    <label class="form-label">ID</label>
+                    <div class="form-control" th:text="${endereco.id}"></div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Logradouro</label>
+                    <div class="form-control" th:text="${endereco.logradouro}"></div>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Número</label>
+                    <div class="form-control" th:text="${endereco.numero}"></div>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">CEP</label>
+                    <div class="form-control" th:text="${endereco.cep}"></div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Bairro</label>
+                    <div class="form-control" th:text="${endereco.bairro}"></div>
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label">Cidade</label>
+                    <div class="form-control" th:text="${endereco.cidade}"></div>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Estado</label>
+                    <div class="form-control" th:text="${endereco.estado}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

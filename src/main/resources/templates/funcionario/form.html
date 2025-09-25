@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Cadastro de Funcionário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-4">
+    <div th:replace="~{fragmentos :: menu}" />
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 mb-0" th:text="${funcionario.id} != null ? 'Editar Funcionário' : 'Novo Funcionário'"></h1>
+        <a href="/funcionarios" class="btn btn-outline-secondary">Voltar</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form th:action="${funcionario.id} != null ? @{'/funcionario/atualizar/' + ${funcionario.id}} : @{/funcionario/salvar}" method="post" th:object="${funcionario}">
+                <div class="row g-3">
+                    <div class="col-md-8">
+                        <label class="form-label">Nome</label>
+                        <input class="form-control" type="text" th:field="*{nome}" required />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Filial</label>
+                        <select class="form-select" th:field="*{filial.id}" required>
+                            <option th:each="f : ${filiais}" th:value="${f.id}" th:text="${f.nome}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-4 d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <a href="/funcionarios" class="btn btn-light">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
