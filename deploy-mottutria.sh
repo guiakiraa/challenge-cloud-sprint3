@@ -6,7 +6,7 @@ export APP_SERVICE_PLAN="planTriaMottu"
 # Altere a sua região conforme orientação do Professor
 export LOCATION="brazilsouth"
 export RUNTIME="JAVA:17-java17"
-export GITHUB_REPO_NAME="/guiakiraa/challenge-cloud-sprint3"
+export GITHUB_REPO_NAME="guiakiraa/challenge-cloud-sprint3"
 export BRANCH="main"
 export APP_INSIGHTS_NAME="ai-mottu-tria"
 
@@ -57,9 +57,10 @@ az webapp config appsettings set \
     ApplicationInsightsAgent_EXTENSION_VERSION="~3" \
     XDT_MicrosoftApplicationInsights_Mode="Recommended" \
     XDT_MicrosoftApplicationInsights_PreemptSdk="1" \
+    WEBSITES_PORT="8080" \
     SPRING_DATASOURCE_USERNAME="admsql" \
     SPRING_DATASOURCE_PASSWORD="Fiap@2tdsvms" \
-    SPRING_DATASOURCE_URL="jdbc:sqlserver://sqlserver-tria.database.windows.net:1433;database=mottudb;user=admsql@sqlserver-tria;password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
+    SPRING_DATASOURCE_URL="jdbc:sqlserver://sqlserver-tria.database.windows.net:1433;database=mottudb;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
 
 # Reiniciar o Web App
 az webapp restart \
