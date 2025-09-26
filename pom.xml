@@ -58,12 +58,6 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
-		<!-- Flyway para migrações de banco -->
-		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
-		</dependency>
-
 		<!-- Testes -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
