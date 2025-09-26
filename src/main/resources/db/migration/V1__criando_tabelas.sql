@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS FUNCAO (
     id bigint AUTO_INCREMENT,
-    nome enum('ADMIN', 'GERENTE'),
+    nome VARCHAR(20) CHECK (nome IN ('ADMIN', 'GERENTE')),
     primary key (id)
 );
 
