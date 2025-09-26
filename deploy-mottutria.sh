@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export RESOURCE_GROUP_NAME="rg-tria"
-export WEBAPP_NAME="tria-backend"
+export WEBAPP_NAME="tria-java"
 export APP_SERVICE_PLAN="planTriaMottu"
 # Altere a sua região conforme orientação do Professor
 export LOCATION="brazilsouth"
@@ -60,7 +60,7 @@ az webapp config appsettings set \
     WEBSITES_PORT="8080" \
     SPRING_DATASOURCE_USERNAME="admsql" \
     SPRING_DATASOURCE_PASSWORD="Fiap@2tdsvms" \
-    SPRING_DATASOURCE_URL="jdbc:sqlserver://sqlserver-tria.database.windows.net:1433;database=mottudb;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
+    SPRING_DATASOURCE_URL="jdbc:sqlserver://sqlserver-mottutria.database.windows.net:1433;database=triadb;user=admsql@sqlserver-rm9999;password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
 
 # Reiniciar o Web App
 az webapp restart \
