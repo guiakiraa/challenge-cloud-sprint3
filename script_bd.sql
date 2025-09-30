@@ -1,0 +1,59 @@
+-- Tabela de Endereços
+CREATE TABLE IF NOT EXISTS Endereco (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Logradouro VARCHAR(250) NOT NULL,
+    Numero VARCHAR(10) NOT NULL,
+    Complemento VARCHAR(100),
+    Cidade VARCHAR(50) NOT NULL,
+    Estado VARCHAR(50) NOT NULL,
+    Cep VARCHAR(8) NOT NULL
+);
+
+-- Tabela de Funcionários
+CREATE TABLE IF NOT EXISTS Funcionario (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(250) NOT NULL,
+    Cargo VARCHAR(50) NOT NULL,
+    Email VARCHAR(80) NOT NULL,
+    Senha VARCHAR(30) NOT NULL
+);
+
+-- Tabela de Setores
+CREATE TABLE IF NOT EXISTS Setor (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL
+);
+
+-- Tabela de Filiais
+CREATE TABLE IF NOT EXISTS Filial (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL,
+    IdEndereco INT NOT NULL,
+    CONSTRAINT FK_Filial_Endereco FOREIGN KEY (IdEndereco) 
+        REFERENCES Endereco(Id) ON DELETE CASCADE
+);
+
+-- Tabela de Motos
+CREATE TABLE IF NOT EXISTS Moto (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Placa VARCHAR(7) NOT NULL,
+    Modelo VARCHAR(50) NOT NULL,
+    Ano INT NOT NULL,
+    Combustivel VARCHAR(50) NOT NULL,
+    IdFilial INT NOT NULL,
+    CONSTRAINT FK_Moto_Filial FOREIGN KEY (IdFilial) 
+        REFERENCES Filial(Id) ON DELETE CASCADE
+);
+
+-- Relacionamento entre Motos e Setores
+CREATE TABLE IF NOT EXISTS Moto_Setor (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Data DATETIME NOT NULL,
+    Fonte VARCHAR(50) NOT NULL,
+    IdMoto INT NOT NULL,
+    IdSetor INT NOT NULL,
+    CONSTRAINT FK_MotoSetor_Moto FOREIGN KEY (IdMoto) 
+        REFERENCES Moto(Id) ON DELETE RESTRICT,
+    CONSTRAINT FK_MotoSetor_Setor FOREIGN KEY (IdSetor) 
+        REFERENCES Setor(Id) ON DELETE RESTRICT
+);
