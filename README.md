@@ -14,7 +14,7 @@ A aplicação utiliza uma arquitetura baseada em containers no Azure Container I
 ### 1. Clone o Repositório
 
 ```bash
-git clone guiakiraa/challenge-cloud-sprint3
+git clone https://github.com/guiakiraa/challenge-cloud-sprint3.git
 cd challenge-cloud-sprint3
 ```
 
