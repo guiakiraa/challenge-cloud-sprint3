@@ -1,0 +1,31 @@
+# Estágio 1: Build da aplicação
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copia apenas o csproj primeiro para restaurar dependências e melhorar o aproveitamento do cache do Docker
+COPY Tria-2025.csproj ./
+RUN dotnet restore "Tria-2025.csproj"
+
+# Copia o resto dos arquivos da aplicação
+COPY . .
+
+# Publica o resultado no diretório /app/publish
+RUN dotnet publish "Tria-2025.csproj" -c Release -o /app/publish --no-restore
+
+# Estágio 2: Execução da aplicação
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+WORKDIR /app
+
+# Copia apenas os arquivos publicados do build
+COPY --from=build /app/publish .
+
+# Configurar portas da API
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
+
+# Executar com usuário não privilegiado
+RUN addgroup --system appuser && adduser --system --ingroup appuser appuser
+RUN chown -R appuser:appuser /app
+USER appuser
+
+ENTRYPOINT ["dotnet", "Tria-2025.dll"]
