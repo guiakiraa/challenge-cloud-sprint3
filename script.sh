@@ -1,6 +1,14 @@
 #!/bin/bash
 
 # --------------------------
+# 0️⃣ Providers Azure
+# --------------------------
+az provider register --namespace Microsoft.Resources
+az provider register --namespace Microsoft.ContainerRegistry
+az provider register --namespace Microsoft.ContainerInstance
+az provider register --namespace Microsoft.Network
+
+# --------------------------
 # 1️⃣ Criar Resource Group
 # --------------------------
 az group create --name rg-tria --location brazilsouth
